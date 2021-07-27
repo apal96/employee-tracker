@@ -4,7 +4,7 @@ CREATE DATABASE department_db;
 USE department_db;
 SELECT DATABASE ();
 CREATE TABLE department(
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     name VARCHAR(30) NOT NULL -- will hold department name
 );
 CREATE TABLE role(

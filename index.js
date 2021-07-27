@@ -10,36 +10,39 @@ function promptUser(){
             choices: ['View Departments', 'View Roles','View Employees','Add Department','Add Role','Add Employee','Update Employee Role','Exit']
 
         }
-    ]).then((response) => {
-        console.log(response);
-        if(response.viewOrAdd ==="View Departments"){
-            console.log("view dept");
-        }
-        else if(response.viewOrAdd ==="View Roles"){
-            console.log("view Roles");
-        }
-        else if(response.viewOrAdd ==="View Employees"){
-            console.log("view Employees");
-        }
-        else if(response.viewOrAdd ==="Add Department"){
-            console.log("Add Department");
-        }
-        else if(response.viewOrAdd ==="Add Role"){
-            console.log("Add Role");
-        }
-        else if(response.viewOrAdd ==="Add Employee"){
-            console.log("Add Role");
-        }
-        else if(response.viewOrAdd ==="Update Employee Role"){
-            console.log("Add Employee Role");
-        }
-         else{
-            console.log("Goodbye");
-        }
-        
-        
+    ]).then((userResponse) => {
+        console.log(userResponse);
+        handleUserOptions(userResponse); 
     })
 };
+function handleUserOptions(response){
+    if(response.viewOrAdd ==="View Departments"){
+        console.log("view dept");
+        promptUser();
+    }
+    else if(response.viewOrAdd ==="View Roles"){
+        console.log("view Roles");
+    }
+    else if(response.viewOrAdd ==="View Employees"){
+        console.log("view Employees");
+    }
+    else if(response.viewOrAdd ==="Add Department"){
+        console.log("Add Department");
+    }
+    else if(response.viewOrAdd ==="Add Role"){
+        console.log("Add Role");
+    }
+    else if(response.viewOrAdd ==="Add Employee"){
+        console.log("Add Role");
+    }
+    else if(response.viewOrAdd ==="Update Employee Role"){
+        console.log("Add Employee Role");
+    }
+     else{
+        console.log("Goodbye");
+    }
+};
+
 promptUser();
 
 
