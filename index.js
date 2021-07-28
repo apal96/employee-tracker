@@ -26,10 +26,11 @@ function handleUserOptions(query, response){
             }
            else{
              console.log(rows)
+             promptUser();
             };
           });
         
-        promptUser();
+
     }
     else if(response.viewOrAdd ==="View Roles"){
         console.log("view Roles");
@@ -41,13 +42,14 @@ function handleUserOptions(query, response){
             }
            else{
              console.log(rows)
+             promptUser();
             };
           });
-        promptUser();
+       
     }
     else if(response.viewOrAdd ==="View Employees"){
         console.log("view Employees");
-        const sql  = ``;
+        const sql  = `SELECT employee.id AS employee_id, employee.first_name AS first_name ,employee.last_name AS last_name, role.id AS role_id FROM employee LEFT JOIN role ON employee.role_id = role.id ORDER BY employee.last_name;`;
         query.query(sql, (err, rows) => {
             if (err) {
               error: err.message;
@@ -55,9 +57,10 @@ function handleUserOptions(query, response){
             }
            else{
              console.log(rows)
+             promptUser();
             };
           });
-        promptUser();
+  
     }
     else if(response.viewOrAdd ==="Add Department"){
         console.log("Add Department");
