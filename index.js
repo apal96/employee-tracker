@@ -33,10 +33,30 @@ function handleUserOptions(query, response){
     }
     else if(response.viewOrAdd ==="View Roles"){
         console.log("view Roles");
+        const sql  = `SELECT role.title AS title, role.id AS role_id ,role.department_id AS role_dept ,role.salary AS salary FROM role LEFT JOIN department ON role.department_id = department.id ORDER BY department.name;`;
+        query.query(sql, (err, rows) => {
+            if (err) {
+              error: err.message;
+              return;
+            }
+           else{
+             console.log(rows)
+            };
+          });
         promptUser();
     }
     else if(response.viewOrAdd ==="View Employees"){
         console.log("view Employees");
+        const sql  = ``;
+        query.query(sql, (err, rows) => {
+            if (err) {
+              error: err.message;
+              return;
+            }
+           else{
+             console.log(rows)
+            };
+          });
         promptUser();
     }
     else if(response.viewOrAdd ==="Add Department"){
