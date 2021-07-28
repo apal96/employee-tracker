@@ -18,32 +18,40 @@ function promptUser(){
 function handleUserOptions(response){
     if(response.viewOrAdd ==="View Departments"){
         console.log("view dept");
+        
         promptUser();
     }
     else if(response.viewOrAdd ==="View Roles"){
         console.log("view Roles");
+        promptUser();
     }
     else if(response.viewOrAdd ==="View Employees"){
         console.log("view Employees");
+        promptUser();
     }
     else if(response.viewOrAdd ==="Add Department"){
         console.log("Add Department");
+        promptUser();
     }
     else if(response.viewOrAdd ==="Add Role"){
         console.log("Add Role");
+        promptUser();
     }
     else if(response.viewOrAdd ==="Add Employee"){
         console.log("Add Role");
+        promptUser();
     }
     else if(response.viewOrAdd ==="Update Employee Role"){
-        console.log("Add Employee Role");
+        console.log("Update Employee Role");
+        promptUser();
     }
      else{
         console.log("Goodbye");
     }
 };
 
-promptUser();
+// promptUser();
 
+module.exports = {promptUser};
 
 
