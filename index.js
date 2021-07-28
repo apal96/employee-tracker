@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 //Options to view all departments, view al roles, view all employees, add a department, add a role, add an employee, and update an employee role
 
-function promptUser(){
+function promptUser(query){
     inquirer.prompt([
         {
             type: 'list',
@@ -12,12 +12,22 @@ function promptUser(){
         }
     ]).then((userResponse) => {
         console.log(userResponse);
-        handleUserOptions(userResponse); 
+        handleUserOptions(query, userResponse); 
     })
 };
-function handleUserOptions(response){
+function handleUserOptions(query, response){
     if(response.viewOrAdd ==="View Departments"){
         console.log("view dept");
+        const sql  = `SELECT department.name AS department, role.department_id FROM role LEFT JOIN department ON role.department_id = department.id ORDER BY department.name;`;
+        query.query(sql, (err, rows) => {
+            if (err) {
+              error: err.message;
+              return;
+            }
+           else{
+             console.log(rows)
+            };
+          });
         
         promptUser();
     }
