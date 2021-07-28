@@ -64,14 +64,71 @@ function handleUserOptions(query, response){
     }
     else if(response.viewOrAdd ==="Add Department"){
         console.log("Add Department");
-        promptUser();
-    }
+
+    inquirer.prompt([
+    {
+    type: 'input',
+    name: 'name',
+    message: 'What is the department name?',
+     }]).then((names) =>{
+        const sql = ` INSERT INTO department (name) VALUES (?)`;
+        const param = names.name;
+        console.log(names.name);
+        query.query(sql, param, (err, rows) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+           else{
+             console.log(rows)
+             promptUser();
+            };
+          });
+    });
+     }
+      
     else if(response.viewOrAdd ==="Add Role"){
+        inquirer.prompt([
+            {
+            type: 'input',
+            name: 'name',
+            message: 'What is the role name?',
+            },{
+            type: 'input',
+            name: 'id',
+            message: 'What is the role id?',
+            },{
+            type: 'input',
+            name: 'salary',
+            message: 'What is the role salary?',
+            },{
+            type: 'input',
+            name: 'department_name',
+            message: 'What is the department?',
+                }
+            ]).then((names) =>{
+        // THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
+        // const param = names.name, names.id
+        const sql = `INSERT INTO role(id,title, salary, department_id)VALUES (?,?,?,?) `;
         console.log("Add Role");
-        promptUser();
+        query.query(sql, param, (err, rows) => {
+            if (err) {
+              console.error(err);
+              return;
+            }
+           else{
+             console.log(rows)
+             promptUser();
+            };
+          });
+    });
     }
     else if(response.viewOrAdd ==="Add Employee"){
+        console.log("Add Employee");
+        // THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+        const sql = `INSERT INTO employee(id, first_name, last_name, role_id)VALUES (?,?,?,?) `;
         console.log("Add Role");
+        
         promptUser();
     }
     else if(response.viewOrAdd ==="Update Employee Role"){
